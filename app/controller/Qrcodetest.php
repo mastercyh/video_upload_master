@@ -51,11 +51,11 @@ class Qrcodetest   extends Controller
     public function makeCode(){
 
 //        $thumb='Upload/frame/2021-01/16100003819141thumb.png';
-        $img_r='Upload/frame/2021-01/1610006739.jpg';
-        $size=getimagesize($img_r);
+        $background_pic=input("background_pic");//背景图
+        $size=getimagesize($background_pic);
         $width = $size[0];
         $height=$size[1];
-        $img_r2 = imagecreatefromstring(file_get_contents($img_r));
+        $img_r2 = imagecreatefromstring(file_get_contents($background_pic));
 
         if($width>=$height){
             $thumb_w=$height;
@@ -81,15 +81,16 @@ class Qrcodetest   extends Controller
         imagedestroy($thumb);
         imagedestroy($img_r2);
 
-
+        $data=input("data");
+        $size=input("size");
 
 
 
 
         $config = array(
-            'data'  => 'http://oss.youyiku-yishu.cn/Upload/Vedio/2021-01/16095032617624.mp4',
+            'data'  => $data,
             'level' => 'L',    //支持二维码容错率，动图时建议提高容错率能提高识别率
-            'size'  => 300,
+            'size'  => $size,
             'mode'  => 'background',
             'alpha' =>  1,//背景填充颜色，1半透明；2全透明。半透明可以提高识别度，但是会使背景原图变灰
             'other' => ['filePath' =>"temp.jpg",
@@ -123,7 +124,7 @@ class Qrcodetest   extends Controller
         $runTime = ($endTime-$startTime)*1000 . ' ms';
         echo $runTime;
         if ($qrHander) echo '成功!';
-        $logo = './static/image/common/vedio.png';
+        $logo = input("logo");
         if ($logo !== FALSE) {
             // 从字符串中的图像流新建一图像
             $QR = imagecreatefromstring(file_get_contents($outFile));

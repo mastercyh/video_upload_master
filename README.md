@@ -1,56 +1,30 @@
-ThinkPHP 6.0
-===============
 
-> 运行环境要求PHP7.1+，兼容PHP8.0。
+video_upload_master
+对 https://github.com/xiyuanpingtadi/cuteQRcode 这个项目的改装，换成tp6环境以及加入只取背景图正中间的部分作为背景，加入logo
 
-[官方应用服务市场](https://market.topthink.com) | [`ThinkAPI`——官方统一API服务](https://docs.topthink.com/think-api)
+环境要求
+php_GD库扩展
+php_imagick扩展
+ImageMagick软件
+示例
 
-ThinkPHPV6.0版本由[亿速云](https://www.yisu.com/)独家赞助发布。
+app/Qrcodetest/makeCode
 
-## 主要新特性
 
-* 采用`PHP7`强类型（严格模式）
-* 支持更多的`PSR`规范
-* 原生多应用支持
-* 更强大和易用的查询
-* 全新的事件系统
-* 模型事件和数据库事件统一纳入事件系统
-* 模板引擎分离出核心
-* 内部功能中间件化
-* SESSION/Cookie机制改进
-* 对Swoole以及协程支持改进
-* 对IDE更加友好
-* 统一和精简大量用法
+使用
+参数：
 
-## 安装
+data内容    填写扫码后的连接或信息
+level容错等级  常规二维码容错等级
+size尺寸    大小单位像素，不超过1000px，不小于125px
+mode模式    background背景图模式，normal常规模式，char字符模式
+alpha透明度   背景填充颜色，1半透明；2全透明。在背景图片非常暗的情况下半透明可以提高识别度，但是会使背景原图变灰
+other其他内容
 
-~~~
-composer create-project topthink/think tp 6.0.*
-~~~
-
-如果需要更新框架使用
-~~~
-composer update topthink/framework
-~~~
-
-## 文档
-
-[完全开发手册](https://www.kancloud.cn/manual/thinkphp6_0/content)
-
-## 参与开发
-
-请参阅 [ThinkPHP 核心框架包](https://github.com/top-think/framework)。
-
-## 版权信息
-
-ThinkPHP遵循Apache2开源协议发布，并提供免费使用。
-
-本项目包含的第三方源码和二进制文件之版权信息另行标注。
-
-版权所有Copyright © 2006-2020 by ThinkPHP (http://thinkphp.cn)
-
-All rights reserved。
-
-ThinkPHP® 商标和著作权所有者为上海顶想信息科技有限公司。
-
-更多细节参阅 [LICENSE.txt](LICENSE.txt)
+background_pic 背景图片路径
+char 字符模式使用的字符（可以使用emoji）
+logo  logo路径
+TODO
+ 加入页边距支持
+ 容错率可以自由调整
+ 尺寸可调节
